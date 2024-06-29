@@ -15,7 +15,9 @@ return new class extends Migration
     {
         Schema::create('goals', function (Blueprint $table) {
            $table->id();
-            $table->string('goals_name', 50);
+            $table->string('first_goals_name', 50);
+            $table->string('second_goals_name', 50);
+            $table->string('third_goals_name', 50);
             $table->timestamps();
             $table->softDeletes();
             $table->string('start_day');
