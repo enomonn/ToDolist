@@ -17,7 +17,7 @@ class PostController extends Controller
     {
         return view('posts.setting')->with(['goal'=>$goal]);
     }
-    public function show(Post $goal)
+    public function show(Post $goal,Task $task)
     {
         $day1_tasks=$goal->tasks()->where('day_of_week',1)->get();
         $day2_tasks=$goal->tasks()->where('day_of_week',2)->get();
@@ -99,8 +99,9 @@ class PostController extends Controller
         $task->isComplete=false;
         $task->user_id=Auth::id();
         $task->task_name=$request->task;
-        $task->day_of_week=intval($request->day);;
+        $task->day_of_week=intval($request->day);
         $task->save();
         return redirect('/goal/'.$goal->id);
     }
+
 }
